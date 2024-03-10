@@ -32,4 +32,20 @@ router.post("/get-Task", async (req,res)=>{
     }
 })
 
+router.put("update-task", async (req,res)=>{
+    try {
+        const task = await Task.update({
+            state: req.body.state
+        },{
+            where:{
+                id: req.body.id
+            }
+        })
+
+        res.json({task, message: "ok"})
+    } catch (error) {
+        res.json({error, message: "Error inesperado"})
+    }
+})
+
 module.exports = router

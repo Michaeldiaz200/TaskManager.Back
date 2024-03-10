@@ -11,6 +11,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'authorization','Authorization', "X-Powered-By", "Access-Control-Allow-Origin"]
 }))
 app.use(Express.json())
+
 route(app)
 
 app.get("/", (req, res)=>{

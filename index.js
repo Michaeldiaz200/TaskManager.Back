@@ -6,7 +6,7 @@ const route = require("./routes/index.js")
 
 const port = process.env.PORT || 4000
 app.use(cors({
-    origin: "https://front-task-manager-sigma.vercel.app",
+    origin: "https://front-task-manager-sigma.vercel.app", //https://front-task-manager-sigma.vercel.app
     methods: ['POST', 'GET', 'PATCH', 'DELETE', "OPTIONS", "PUT"],
     allowedHeaders: ['Content-Type', 'authorization','Authorization', "X-Powered-By", "Access-Control-Allow-Origin"]
 }))

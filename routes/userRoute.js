@@ -63,12 +63,49 @@ router.post("/singup", async (req, res) => {
     }
 })
 
-router.get("/infoUser", auth, async (req, res)=>{
-    if(req.user){
+router.get("/infoUser", auth, async (req, res) => {
+    if (req.user) {
         const user = req.user
-        res.json({user, message: "OK"})
+        res.json({ user, message: "OK" })
+    } else {
+        res.json({ error: req.err, message: "Error Inesperado" })
+    }
+})
+
+router.put("/update-user", async (req, res) => {
+    if (req.body.pass) {
+        try {
+            const user = await User.update({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                password: req.body.pass
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+
+            res.json({ user, message: "ok" })
+        } catch (error) {
+            res.json({ error, message: "Error inesperado" })
+        }
     }else{
-        res.json({error: req.err, message: "Error Inesperado"})
+        try {
+            const user = await User.update({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+    
+            res.json({ user, message: "ok" })
+        } catch (error) {
+            res.json({ error, message: "Error inesperado" })
+        }
     }
 })
 

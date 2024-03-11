@@ -17,6 +17,13 @@ module.exports = {
           key: "id"
         }
       },
+      TagId: {
+        type: Sequelize.UUID,
+        references: {
+          model: "Tags",
+          key: "id"
+        }
+      },
       title: {
         type: Sequelize.STRING
       },
@@ -28,7 +35,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       state: {
-        type: Sequelize.ENUM("Pendiente","En Progreso", "Completada")
+        type: Sequelize.ENUM("Pendiente", "En Progreso", "Completada")
       },
       createdAt: {
         allowNull: false,

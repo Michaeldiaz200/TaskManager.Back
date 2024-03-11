@@ -6,6 +6,7 @@ router.post("/new-task", async (req,res) => {
     try {
         const task = await Task.create({
             UserId:req.body.id,
+            TagId: req.body.tagId,
             title: req.body.title,
             description: req.body.description,
             dateEnd: req.body.dateEnd,
@@ -32,7 +33,8 @@ router.post("/get-Task", async (req,res)=>{
     }
 })
 
-router.put("update-task", async (req,res)=>{
+router.put("/update-task", async (req,res)=>{
+    console.log(req.body)
     try {
         const task = await Task.update({
             state: req.body.state

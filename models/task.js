@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsTo(models.Tag)
     }
   }
   Task.init({
@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     UserId: DataTypes.UUID,
+    TagId: DataTypes.UUID,
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     dateEnd: DataTypes.DATE,
